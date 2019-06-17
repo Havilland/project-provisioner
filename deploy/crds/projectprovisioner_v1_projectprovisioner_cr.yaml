@@ -1,0 +1,7 @@
+apiVersion: project-provisioner.io/v1
+kind: ProjectProvisioner
+metadata:
+  name: example-projectprovisioner
+spec:
+  # Add fields here
+  size: 3

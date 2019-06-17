@@ -1,0 +1,5 @@
+---
+- version: v1
+  group: project-provisioner.io
+  kind: ProjectProvisioner
+  role: /opt/ansible/roles/projectprovisioner
