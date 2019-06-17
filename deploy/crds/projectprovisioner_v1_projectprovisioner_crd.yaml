@@ -9,7 +9,7 @@ spec:
     listKind: ProjectProvisionerList
     plural: projectprovisioners
     singular: projectprovisioner
-  scope: Namespaced
+  scope: Cluster
   subresources:
     status: {}
   version: v1
