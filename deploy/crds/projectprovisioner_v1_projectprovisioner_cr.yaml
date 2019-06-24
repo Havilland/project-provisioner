@@ -3,5 +3,4 @@ kind: ProjectProvisioner
 metadata:
   name: example-projectprovisioner
 spec:
-  # Add fields here
-  size: 3
+  project_definition_git: "https://gitlab.com/havilland/project-testing.git"

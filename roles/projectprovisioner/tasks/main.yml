@@ -2,19 +2,14 @@
 # tasks file for projectprovisioner
 - name: Fetch Repository
   git:
-    repo: "{{ project-definion-git }}"
+    repo: "{{ project_definition_git }}"
     dest: /tmp/checkout
-    version: Master
 
 - name: include variables from git repo
   include_vars:
     file: /tmp/checkout/projects.yaml
 
-- name: Create Projects based on definition
-  k8s:
-    definition:
-      apiVersion: project.openshift.io/v1
-      kind: Projects
-      metadata:
-        name: "{{ item.name }}"
+- include_tasks: project-provision.yml
   loop: "{{ projects }}"
+  loop_control:
+    loop_var: current_project
