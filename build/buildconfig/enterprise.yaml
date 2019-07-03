@@ -27,5 +27,9 @@ spec:
   strategy:
     dockerStrategy:
       dockerfilePath: build/Dockerfile-RH
+      from:
+        kind: ImageStreamTag
+        name: 'ose-ansible-operator:latest'
+        namespace: 'openshift'
     type: Docker
 successfulBuildsHistoryLimit: 5
