@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: project-provisioner
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: project-provisioner
+  template:
+    metadata:
+      labels:
+        name: project-provisioner
+    spec:
+      serviceAccountName: project-provisioner
+      containers:
+        - name: operator
+          # Replace this with the built image name
+          image: "docker-registry.default.svc:5000/openshift/project-provisioner:v0.11"
+          imagePullPolicy: "Always"
+          volumeMounts:
+          - mountPath: /tmp/ansible-operator/runner
+            name: runner
+          env:
+            - name: WATCH_NAMESPACE
+              value: ""
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: OPERATOR_NAME
+              value: "project-provisioner"
+      volumes:
+        - name: runner
+          emptyDir: {}

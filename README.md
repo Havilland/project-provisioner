@@ -50,3 +50,7 @@ If you want to build the Operator in Openshift you can use the BuildConfig files
 ```
 skopeo copy docker://registry.redhat.io/openshift4/ose-ansible-operator:v4.1 docker://docker-registry-default.$OPENSHIFT_DOMAIN/openshift/ose-ansible-operator:latest --dest-creds $(oc whoami):$(oc whoami -t)
 ```
+
+When the image is present in the cluster, use `oc create -f` to create the resources needed (deploy folder), you will need to set the namespace in which the Operator will be deployed in the role_binding.yaml before.
+
+Use operator.yaml if the upstream base image was used and operator-enterprise.yaml if the RedHat base image was used.
