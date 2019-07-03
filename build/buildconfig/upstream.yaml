@@ -1,0 +1,31 @@
+---
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: project-provisioner
+---
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  labels:
+    build: project-provisioner
+  name: project-provisioner
+spec:
+  failedBuildsHistoryLimit: 5
+  nodeSelector: null
+  output:
+    to:
+      kind: ImageStreamTag
+      name: project-provisioner:latest
+  postCommit: {}
+  resources: {}
+  runPolicy: Serial
+  source:
+    git:
+      uri: 'https://github.com/havilland/project-provisioner.git'
+    type: Git
+  strategy:
+    dockerStrategy:
+      dockerfilePath: build/Dockerfile
+    type: Docker
+successfulBuildsHistoryLimit: 5
