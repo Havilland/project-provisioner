@@ -2,12 +2,12 @@
   k8s_facts:
     api_version: v1
     kind: Pod
-    namespace: "{{ current_namespace.name }}"
+    namespace: "{{ current_project.name }}"
   register: namespace_pods
 
 - name: Deleting empty project
   k8s:
-    name: "{{ current_namespace.name }}"
+    name: "{{ current_project.name }}"
     api_version: v1
     kind: Namespace
     state: absent
