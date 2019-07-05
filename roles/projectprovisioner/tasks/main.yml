@@ -13,3 +13,10 @@
   loop: "{{ projects }}"
   loop_control:
     loop_var: current_project
+  when: current_project.deprovision is not defined or not current_project.deprovision
+
+- include_tasks: project-deprovision.yaml
+  loop: "{{ projects }}"
+  loop_control:
+    loop_var: current_project
+  when: current_project.deprovision is defined and current_project.deprovision
