@@ -8,12 +8,14 @@ This is a simple operator which provisions projects in Openshift based on defini
 ---
 projects:
 - name: testing1
+  deprovision: true
+## if project is empty it will be deleted, if not empty display name will be changed to "!MARKED FOR DELETION!" and the label deprovision: true will be set
   owner: John
   ownerMail: "john@wick.com"
   access:
   - role: admin
     subjectName: testuser
-    kind: User
+    kind: [User|Group]
 - name: more-testing
   owner: Jim
   ownerMail: "jim@wick.com"
