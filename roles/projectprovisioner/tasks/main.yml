@@ -13,3 +13,9 @@
   loop: "{{ projects }}"
   loop_control:
     loop_var: current_project
+
+- include_tasks: project-deprovision.yaml
+  loop: "{{ projects }}"
+  loop_control:
+    loop_var: current_project
+  when: current_project.deprovision
