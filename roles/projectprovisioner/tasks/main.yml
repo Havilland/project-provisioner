@@ -19,4 +19,4 @@
   loop: "{{ projects }}"
   loop_control:
     loop_var: current_project
-  when: current_project.deprovision
+  when: current_project.deprovision is defined and current_project.deprovision
