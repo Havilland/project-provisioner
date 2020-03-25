@@ -11,21 +11,21 @@ projects:
   deprovision: true
 ## if project is empty it will be deleted, if not empty display name will be changed to "!MARKED FOR DELETION!" and the label deprovision: true will be set
   owner: John
-  ownerMail: "john@wick.com"
+  ownerMail: "john@example.com"
   access:
   - role: admin
     subjectName: testuser
     kind: [User|Group]
 - name: more-testing
   owner: Jim
-  ownerMail: "jim@wick.com"
+  ownerMail: "jim@example.com"
   access:
   - role: edit
     subjectName: testuser
     kind: User
 - name: foobar
   owner: "Zaphod Beeblebrox"
-  ownerMail: "president@galactic.com"
+  ownerMail: "president@example.com"
   access:
   - role: view
     subjectName: testuser
